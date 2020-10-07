@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: static-web
-  nanespace: shipping-dev
+  namespace: shipping-dev
   labels:
     role: myrole
 spec:
