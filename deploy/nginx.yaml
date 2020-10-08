@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  lables:
+    env: {{ .values.env1 }}
+spec:
+  replicas: {{ .values.aws }}
+  selector: 
+	matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+	  containers:
+	  - name: {{ .values.container.name }}
+	    image: {{ .values.container.image }}
+	    ports:
+	    - containerPort: {{ .values.container.port }}
+	  
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  lables:
+    env: {{ .values.env2 }}
+spec:
+  replicas: {{ .values.gcp }}
+  selector: 
+	matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+	  containers:
+	  - name: {{ .values.container.name }}
+	    image: {{ .values.container.image }}
+	    ports:
+	    - containerPort: {{ .values.container.port }}
