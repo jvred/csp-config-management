@@ -1,44 +1,19 @@
-apiVersion: apps/v1
+apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: nginx-deployment
+  name: hello-world
   lables:
     env: {{ .values.aws.env }}
 spec:
   replicas: {{ .values.aws.replicaCount }}
-  selector: 
-    matchLabels:
-      app: nginx
   template:
     metadata:
       labels:
-        app: nginx
+        app: hello-world
     spec:
       containers:
-      - name: {{ .values.aws.container.name }}
-        image: {{ .values.aws.container.image }}
-	ports:
-	- containerPort: {{ .values.aws.container.port }}
-	  
-
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: nginx-deployment
-  lables:
-    env: {{ .values.gcp.env }}
-spec:
-  replicas: {{ .values.gcp.replicaCount }}
-  selector: 
-    matchLabels:
-      app: nginx
-  template:
-    metadata:
-      labels:
-        app: nginx
-    spec:
-      containers:
-      - name: {{ .values.gcp.container.name }}
-      image: {{ .values.gcp.container.image }}
-      ports:
-      - containerPort: {{ .values.gcp.container.port }}
+      - name: hello-world-pod
+        image: arungupta/helloworld-spring-boot:latest
+        ports: 
+        - containerPort: 80
+        - containerPort: 443
