@@ -3,9 +3,9 @@ kind: Deployment
 metadata:
   name: nginx-deployment
   lables:
-    env: {{ .values.env1 }}
+    env: {{ .values.aws.env }}
 spec:
-  replicas: {{ .values.aws }}
+  replicas: {{ .values.aws.replicaCount }}
   selector: 
 	matchLabels:
       app: nginx
@@ -15,10 +15,10 @@ spec:
         app: nginx
     spec:
 	  containers:
-	  - name: {{ .values.container.name }}
-	    image: {{ .values.container.image }}
+	  - name: {{ .values.aws.container.name }}
+	    image: {{ .values.aws.container.image }}
 	    ports:
-	    - containerPort: {{ .values.container.port }}
+	    - containerPort: {{ .values.aws.container.port }}
 	  
 
 apiVersion: apps/v1
@@ -26,9 +26,9 @@ kind: Deployment
 metadata:
   name: nginx-deployment
   lables:
-    env: {{ .values.env2 }}
+    env: {{ .values.gcp.env }}
 spec:
-  replicas: {{ .values.gcp }}
+  replicas: {{ .values.gcp.replicaCount }}
   selector: 
 	matchLabels:
       app: nginx
@@ -38,7 +38,7 @@ spec:
         app: nginx
     spec:
 	  containers:
-	  - name: {{ .values.container.name }}
-	    image: {{ .values.container.image }}
+	  - name: {{ .values.gcp.container.name }}
+	    image: {{ .values.gcp.container.image }}
 	    ports:
-	    - containerPort: {{ .values.container.port }}
+	    - containerPort: {{ .values.gcp.container.port }}
