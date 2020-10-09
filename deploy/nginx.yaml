@@ -14,11 +14,11 @@ spec:
       labels:
         app: nginx
     spec:
-	  containers:
-	  - name: {{ .values.aws.container.name }}
-	    image: {{ .values.aws.container.image }}
-	    ports:
-	    - containerPort: {{ .values.aws.container.port }}
+      containers:
+      - name: {{ .values.aws.container.name }}
+        image: {{ .values.aws.container.image }}
+	ports:
+	- containerPort: {{ .values.aws.container.port }}
 	  
 
 apiVersion: apps/v1
@@ -37,8 +37,8 @@ spec:
       labels:
         app: nginx
     spec:
-	  containers:
-	  - name: {{ .values.gcp.container.name }}
-	    image: {{ .values.gcp.container.image }}
-	    ports:
-	    - containerPort: {{ .values.gcp.container.port }}
+      containers:
+      - name: {{ .values.gcp.container.name }}
+      image: {{ .values.gcp.container.image }}
+      ports:
+      - containerPort: {{ .values.gcp.container.port }}
