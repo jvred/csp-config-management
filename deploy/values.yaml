@@ -1,0 +1,15 @@
+aws:
+  env: aws
+  replicaCount:: 1
+  container:
+    name: nginx-container
+    image: nginx:1.14.2
+    port: 80
+
+gcp:
+  replicaCount: 2
+  env: gcp
+  container:
+    name: nginx-container
+    image: nginx:1.14.2
+    port: 80
